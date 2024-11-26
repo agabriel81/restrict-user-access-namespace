@@ -54,8 +54,8 @@ $ oc adm node-logs <one of your master nodes> --path=kube-apiserver/audit.log  |
 Another approach could be to create a ValidatingAdmissionPolicy / ValidatingAdmissionPolicyBinding to restrict terminal and pod debug capabilities from namespaces where a particular label is assigned:  
 
 ~~~
-$ oc label ns debugpod=false
-$ oc label ns terminalaccess=false
+$ oc label ns test debugpod=false
+$ oc label ns test terminalaccess=false
 $ oc create -f validatingadmissionpolicies/*
 ~~~
 
