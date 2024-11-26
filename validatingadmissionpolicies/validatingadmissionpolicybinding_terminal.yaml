@@ -1,0 +1,11 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "deny-terminal-access"
+spec:
+  policyName: "deny-terminal-access"
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        terminalaccess: false

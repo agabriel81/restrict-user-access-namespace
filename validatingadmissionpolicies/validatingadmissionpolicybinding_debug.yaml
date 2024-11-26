@@ -1,0 +1,11 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "deny-pod-debug-access-binding"
+spec:
+  policyName: "deny-pod-debug-access"
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        debugpod: false
