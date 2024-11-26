@@ -10,6 +10,12 @@ The first solution doesn't require any special requirements because it leverages
 The second solution approach will require OpenShift 4.17+ as it leverages the ValidatingAdmissionPolicy / ValidatingAdmissionPolicyBinding included from Kubernetes 1.30+  
 ValidatingWebhookConfiguration / WebhookConfiguration can be used as well but they won't be explored in this repository.  
 
+## Clone the repo
+
+~~~
+$ git clone https://github.com/agabriel81/restrict-user-access-namespace
+~~~
+
 ## Create a sample app in a test namespace
 
 In OpenShift, all users will have the `self-provisioner` role and the `self-provisioners` cluster role binding by default to all authenticated users.   
