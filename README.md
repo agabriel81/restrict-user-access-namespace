@@ -21,7 +21,7 @@ $ oc new-app --name nodejs-s2i https://github.com/nodeshift-starters/nodejs-rest
 
 And by default, the user creating the project, will get the `admin` permissions.  
 
-# First approach: RBAC
+## First approach: RBAC
 
 In order to make sure that other users/groups joining the namespace cannot access either pod terminal and pod debug capabilites from both the Web Console and the `oc` CLI, we can assign the out-of-the-box `view` role.  
 If we need more permissions such as the `edit` role, we can remove the `pod/exec` and the bare `pod/create` from the out-of-the-box `edit` role.  
