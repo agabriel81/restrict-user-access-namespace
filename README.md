@@ -56,7 +56,7 @@ Another approach could be to create a ValidatingAdmissionPolicy / ValidatingAdmi
 ~~~
 $ oc label ns test debugpod=false
 $ oc label ns test terminalaccess=false
-$ oc create -f validatingadmissionpolicies/*
+$ for i in $(ls validatingadmissionpolicies); do oc create -f validatingadmissionpolicies/$i; done
 ~~~
 
 ## Test both approaches
