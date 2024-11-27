@@ -59,7 +59,7 @@ $ oc label ns test terminalaccess=false
 $ oc create -f validatingadmissionpolicies/*
 ~~~
 
-## Test both approachess
+## Test both approaches
 
 Let's try both terminal and pod debug capabilites:  
 
@@ -69,3 +69,26 @@ $ oc rsh <pod name>
 $ oc debug pod/<pod name>
 ~~~
 
+For RBAC approach you'll get an output similar:
+
+~~~
+$ oc rsh nodejs-s2i-d97cdf6d6-5t4qg
+Error from server (Forbidden): pods "nodejs-s2i-d97cdf6d6-5t4qg" is forbidden: User "user1" cannot create resource "pods/exec" in API group "" in the namespace "test"
+$
+$
+$ oc debug pod/nodejs-s2i-d97cdf6d6-5t4qg   
+Error from server (Forbidden): pods is forbidden: User "user1" cannot create resource "pods" in API group "" in the namespace "test"
+$
+~~~
+
+For the ValidatingAdmissionPolicy approach you'll get an output similar:
+
+~~~
+$ oc rsh nodejs-s2i-d97cdf6d6-5t4qg
+The pods "nodejs-s2i-d97cdf6d6-5t4qg" is invalid: : ValidatingAdmissionPolicy 'deny-terminal-access' with binding 'deny-terminal-access-binding' denied request: Accessing the pod terminal is not allowed
+$
+$
+$ oc debug pod/nodejs-s2i-d97cdf6d6-5t4qg
+The pods "nodejs-s2i-d97cdf6d6-5t4qg-debug-pr5tg" is invalid: : ValidatingAdmissionPolicy 'deny-pod-debug-access' with binding 'deny-pod-debug-access-binding' denied request: Creating debug pod is not allowed
+$ 
+~~~
