@@ -92,3 +92,19 @@ $ oc debug pod/nodejs-s2i-d97cdf6d6-5t4qg
 The pods "nodejs-s2i-d97cdf6d6-5t4qg-debug-pr5tg" is invalid: : ValidatingAdmissionPolicy 'deny-pod-debug-access' with binding 'deny-pod-debug-access-binding' denied request: Creating debug pod is not allowed
 $ 
 ~~~
+
+## Troubleshooting
+
+~~~
+$ oc whoami
+angelo
+$ oc project
+Using project "test" on server "https://api.XXX.com:6443".
+$ oc auth can-i get pods
+yes
+$ oc auth can-i get pods --subresource=exec
+yes
+$ oc auth can-i create pods --subresource=exec
+yes
+$
+~~~
