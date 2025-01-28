@@ -103,8 +103,8 @@ Using project "test" on server "https://api.XXX.com:6443".
 $ oc auth can-i get pods
 yes
 $ oc auth can-i get pods --subresource=exec
-yes
+no
 $ oc auth can-i create pods --subresource=exec
-yes
+no
 $
 ~~~
